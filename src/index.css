@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,15 +6,15 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 220 10% 25%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 10% 25%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 10% 25%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 210 80% 50%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 210 40% 96.1%;
@@ -32,70 +33,110 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gray-50 text-foreground font-sans;
   }
+
+  .card-shadow {
+    @apply shadow-md shadow-gray-200/60;
+  }
+
+  .input-focus {
+    @apply focus:ring-2 focus:ring-medical-blue/40 focus:border-medical-blue transition duration-200;
+  }
+
+  .btn-primary {
+    @apply bg-medical-blue text-white rounded-md py-3 font-medium shadow-sm hover:bg-medical-blue/90 active:bg-medical-blue/80 transition duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-medical-blue border border-medical-blue rounded-md py-2.5 font-medium hover:bg-gray-50 active:bg-gray-100 transition duration-200;
+  }
+
+  .license-input {
+    @apply w-10 h-11 border border-gray-300 rounded-md text-center text-lg font-medium focus:outline-none input-focus;
+  }
+
+  .license-input-first {
+    @apply w-14 h-11 border border-gray-300 rounded-md text-center text-lg font-medium focus:outline-none input-focus;
+  }
+}
+
+/* Special keyboard styles */
+.plate-keyboard {
+  @apply fixed bottom-0 left-0 right-0 bg-gray-100 py-2 px-2 border-t border-gray-200 z-40;
+}
+
+.plate-key {
+  @apply h-12 flex items-center justify-center bg-white rounded-md shadow-sm text-base font-medium border border-gray-100 active:bg-gray-50;
+}
+
+/* Top navigation bar */
+.nav-bar {
+  @apply fixed top-0 left-0 right-0 h-12 bg-white flex items-center justify-between px-4 shadow-sm z-30;
+}
+
+/* Container padding to account for fixed elements */
+.content-container {
+  @apply pt-14 pb-2 px-4 max-w-lg mx-auto min-h-screen;
+}
+
+/* Card styles */
+.info-card {
+  @apply bg-white rounded-xl p-4 card-shadow mb-4;
+}
+
+.info-card-gradient {
+  @apply bg-gradient-card rounded-xl p-4 card-shadow mb-4;
+}
+
+/* Status indicators */
+.status-success {
+  @apply flex items-center text-medical-success font-medium space-x-1;
+}
+
+.status-error {
+  @apply flex items-center text-medical-error font-medium space-x-1;
+}
+
+/* Information rows */
+.info-row {
+  @apply flex justify-between py-2 border-b border-gray-100 last:border-0;
+}
+
+.info-label {
+  @apply text-gray-500;
+}
+
+.info-value {
+  @apply font-medium;
+}
+
+/* Tab styles */
+.tab-container {
+  @apply flex mb-4;
+}
+
+.tab {
+  @apply flex-1 py-2.5 text-center text-gray-500 border-b-2 border-gray-200;
+}
+
+.tab-active {
+  @apply text-medical-blue border-b-2 border-medical-blue font-medium;
 }
